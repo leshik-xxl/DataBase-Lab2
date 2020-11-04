@@ -795,7 +795,7 @@ false posixrules
       <ObjectId>16394</ObjectId>
       <Comment>LAB_1</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>776</IntrospectionStateNumber>
+      <IntrospectionStateNumber>793</IntrospectionStateNumber>
       <Relations>sequence|table|16406|16408|1
 sequence|table|16497|16499|1
 sequence|table|16507|16504|1
@@ -858,7 +858,7 @@ sequence|table|24732|24726|2
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>777</IntrospectionStateNumber>
+      <IntrospectionStateNumber>794</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="17" parent="3" name="heap">
@@ -961,7 +961,7 @@ sequence|table|24732|24726|2
     <table id="34" parent="16" name="carriage">
       <ObjectId>16473</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>696</StateNumber>
+      <StateNumber>790</StateNumber>
     </table>
     <table id="35" parent="16" name="client">
       <ObjectId>16408</ObjectId>
@@ -981,7 +981,7 @@ sequence|table|24732|24726|2
     <table id="38" parent="16" name="route_to_train">
       <ObjectId>16504</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>719</StateNumber>
+      <StateNumber>781</StateNumber>
     </table>
     <table id="39" parent="16" name="ticket">
       <ObjectId>24726</ObjectId>
@@ -1015,26 +1015,25 @@ sequence|table|24732|24726|2
       <StateNumber>563</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="34" name="fk_id_route_to_train">
-      <Position>7</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>696</StateNumber>
-      <TypeId>23</TypeId>
+    <column id="44" parent="34" name="fk_train">
+      <Position>8</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <StateNumber>790</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <index id="45" parent="34" name="carriage_pkey">
+    <index id="45" parent="34" name="number_train_unique">
+      <ObjectId>24864</ObjectId>
+      <StateNumber>792</StateNumber>
+      <ColNames>number
+fk_train</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="46" parent="34" name="carriage_pkey">
       <ObjectId>16550</ObjectId>
       <StateNumber>563</StateNumber>
       <ColNames>id_carriage</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
-    </index>
-    <index id="46" parent="34" name="unique_train_number">
-      <ObjectId>24799</ObjectId>
-      <StateNumber>697</StateNumber>
-      <ColNames>fk_id_route_to_train
-number</ColNames>
-      <Unique>1</Unique>
     </index>
     <key id="47" parent="34" name="carriage_pkey">
       <ObjectId>16551</ObjectId>
@@ -1043,22 +1042,22 @@ number</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>carriage_pkey</UnderlyingIndexName>
     </key>
-    <key id="48" parent="34" name="unique_train_number">
-      <ObjectId>24800</ObjectId>
-      <StateNumber>697</StateNumber>
-      <ColNames>fk_id_route_to_train
-number</ColNames>
-      <UnderlyingIndexName>unique_train_number</UnderlyingIndexName>
+    <key id="48" parent="34" name="number_train_unique">
+      <ObjectId>24865</ObjectId>
+      <StateNumber>792</StateNumber>
+      <ColNames>number
+fk_train</ColNames>
+      <UnderlyingIndexName>number_train_unique</UnderlyingIndexName>
     </key>
-    <foreign-key id="49" parent="34" name="fk_carriage_train_on_route">
-      <ObjectId>24794</ObjectId>
-      <StateNumber>696</StateNumber>
-      <ColNames>fk_id_route_to_train</ColNames>
-      <RefTableId>16504</RefTableId>
+    <foreign-key id="49" parent="34" name="fk_carriage_to_train">
+      <ObjectId>24866</ObjectId>
+      <StateNumber>792</StateNumber>
+      <ColNames>fk_train</ColNames>
+      <RefTableId>16491</RefTableId>
       <RefColPositions>1</RefColPositions>
-      <RefTableName>route_to_train</RefTableName>
-      <RefKeyName>route_to_train_pkey</RefKeyName>
-      <RefColNames>id_route_to_train</RefColNames>
+      <RefTableName>train</RefTableName>
+      <RefKeyName>train_pkey</RefKeyName>
+      <RefColNames>id_train</RefColNames>
     </foreign-key>
     <column id="50" parent="35" name="id_client">
       <Position>1</Position>
@@ -1253,18 +1252,18 @@ carriage_id</ColNames>
       <TypeId>1043</TypeId>
     </column>
     <column id="76" parent="38" name="arrive_time">
-      <Position>4</Position>
-      <DataType>time|0s</DataType>
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>719</StateNumber>
-      <TypeId>1083</TypeId>
+      <StateNumber>791</StateNumber>
+      <TypeId>1114</TypeId>
     </column>
     <column id="77" parent="38" name="depart_time">
-      <Position>5</Position>
-      <DataType>time|0s</DataType>
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>719</StateNumber>
-      <TypeId>1083</TypeId>
+      <StateNumber>791</StateNumber>
+      <TypeId>1114</TypeId>
     </column>
     <index id="78" parent="38" name="route_to_train_pkey">
       <ObjectId>16514</ObjectId>
