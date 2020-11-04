@@ -5,18 +5,21 @@ import java.util.List;
 public class Place {
     private Integer id;
     private Integer number;
-    private List<Carriage> carriageList;
+    private Carriage carriage;
 
-    public Place(Integer id, Integer number, List<Carriage> carriageList) {
+    public Place(Integer id, Integer number, Carriage carriage) {
         this.id = id;
         this.number = number;
-        this.carriageList = carriageList;
+        this.carriage = carriage;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getNumber() {
         return number;
@@ -26,11 +29,20 @@ public class Place {
         this.number = number;
     }
 
-    public List<Carriage> getCarriageList() {
-        return carriageList;
+    public Carriage getCarriage() {
+        return carriage;
     }
 
-    public void setCarriageList(List<Carriage> carriageList) {
-        this.carriageList = carriageList;
+    public void setCarriage(Carriage carriage) {
+        this.carriage = carriage;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id=" + id +
+                ", number=" + number +
+                ", carriage=" + carriage.getId() +
+                "}\n";
     }
 }
