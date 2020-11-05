@@ -1,67 +1,72 @@
 package app.model.entities;
 
 import javax.xml.crypto.Data;
-import java.util.List;
+import java.util.Date;
 
 public class RouteToTrain {
     private Integer id;
-    private List<Route> routeList;
-    private List<Train> trainList;
-    private Data arriveTime;
-    private Data DepartTime;
+    private Route route;
+    private Train train;
+    private Date arriveTime;
+    private Date departTime;
 
-    public RouteToTrain(Integer id, List<Route> routeList, List<Train> trainList, Data arriveTime, Data departTime) {
+    public RouteToTrain(Integer id, Route route, Train train, Date arriveTime, Date departTime) {
         this.id = id;
-        this.routeList = routeList;
-        this.trainList = trainList;
+        this.route = route;
+        this.train = train;
         this.arriveTime = arriveTime;
-        DepartTime = departTime;
+        this.departTime = departTime;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public List<Route> getRouteList() {
-        return routeList;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setRouteList(List<Route> routeList) {
-        this.routeList = routeList;
+    public Route getRoute() {
+        return route;
     }
 
-    public List<Train> getTrainList() {
-        return trainList;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
-    public void setTrainList(List<Train> trainList) {
-        this.trainList = trainList;
+    public Train getTrain() {
+        return train;
     }
 
-    public Data getArriveTime() {
+    public void setTrain(Train train) {
+        this.train = train;
+    }
+
+    public Date getArriveTime() {
         return arriveTime;
     }
 
-    public void setArriveTime(Data arriveTime) {
+    public void setArriveTime(Date arriveTime) {
         this.arriveTime = arriveTime;
     }
 
-    public Data getDepartTime() {
-        return DepartTime;
+    public Date getDepartTime() {
+        return departTime;
     }
 
-    public void setDepartTime(Data departTime) {
-        DepartTime = departTime;
+    public void setDepartTime(Date departTime) {
+        this.departTime = departTime;
     }
 
     @Override
     public String toString() {
         return "RouteToTrain{" +
                 "id=" + id +
-                ", routeList=" + routeList +
-                ", trainList=" + trainList +
+                ", train=" + train.getId_train() +
+                ", place_of_departure=" + route.getPlace_of_departure() +
+                ", place_of_arrival=" + route.getPlace_of_arrival() +
                 ", arriveTime=" + arriveTime +
-                ", DepartTime=" + DepartTime +
-                '}';
+                ", departTime=" + departTime +
+                "}\n";
     }
 }

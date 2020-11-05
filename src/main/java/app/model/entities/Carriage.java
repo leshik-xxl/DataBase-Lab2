@@ -6,13 +6,13 @@ public class Carriage {
     private String type;
     private Integer number;
     private String id;
-    private List<Train> routeToTrainList;
+    private Train train;
 
-    public Carriage(String type, Integer number, String id, List<Train> routeToTrainList) {
+    public Carriage(String type, Integer number, String id, Train train) {
         this.type = type;
         this.number = number;
         this.id = id;
-        this.routeToTrainList = routeToTrainList;
+        this.train = train;
     }
 
     public String getType() {
@@ -39,12 +39,12 @@ public class Carriage {
         this.id = id;
     }
 
-    public List<Train> getRouteToTrainList() {
-        return routeToTrainList;
+    public Train getTrain() {
+        return train;
     }
 
-    public void setRouteToTrainList(List<Train> routeToTrainList) {
-        this.routeToTrainList = routeToTrainList;
+    public void setTrain(Train train) {
+        this.train = train;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Carriage {
                 "type='" + type + '\'' +
                 ", number=" + number +
                 ", id='" + id + '\'' +
-                ", routeToTrainList=" + routeToTrainList +
+                ", train=" + train.getId_train() +
                 "}\n";
     }
 }

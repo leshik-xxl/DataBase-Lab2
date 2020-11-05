@@ -30,6 +30,6 @@ public class Train {
         return "Train{" +
                 "id_train='" + id_train + '\'' +
                 ", max_carriage=" + max_carriage +
-                '}';
+                "}\n";
     }
 }

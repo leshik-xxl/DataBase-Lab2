@@ -6,8 +6,6 @@ import app.model.entities.Train;
 import java.util.List;
 
 public interface CarriageDao {
-
     List<Carriage> findAllCarriage();
-    List<Train> getTrainName(String id);
-
+    Carriage getCarriageById(String id);
 }

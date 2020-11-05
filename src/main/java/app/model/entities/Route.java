@@ -37,6 +37,6 @@ public class Route {
                 "id=" + id +
                 ", place_of_departure='" + place_of_departure + '\'' +
                 ", place_of_arrival='" + place_of_arrival + '\'' +
-                '}';
+                "}\n";
     }
 }

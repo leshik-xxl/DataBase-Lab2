@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface PlaceDao {
     List<Place> findAllPlace();
-    Carriage getCarriageName(String id);
 }

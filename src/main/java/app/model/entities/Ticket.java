@@ -1,21 +1,22 @@
 package app.model.entities;
 
+import org.postgresql.replication.PGReplicationConnectionImpl;
+
 import java.util.Date;
 import java.util.List;
 
 public class Ticket {
     private Integer id;
-    private List<Client> clientList;
-    private List<Place> placeList;
+    private Client client;
+    private Place place;
     private Integer price;
     private Date buy_date;
     private String privilege;
 
-    public Ticket(Integer id, List<Client> clientList, List<Place> placeList,
-                  Integer price, Date buy_date, String privilege) {
+    public Ticket(Integer id, Client client, Place place, Integer price, Date buy_date, String privilege) {
         this.id = id;
-        this.clientList = clientList;
-        this.placeList = placeList;
+        this.client = client;
+        this.place = place;
         this.price = price;
         this.buy_date = buy_date;
         this.privilege = privilege;
@@ -25,20 +26,24 @@ public class Ticket {
         return id;
     }
 
-    public List<Client> getClientList() {
-        return clientList;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
+    public Client getClient() {
+        return client;
     }
 
-    public List<Place> getPlaceList() {
-        return placeList;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public void setPlaceList(List<Place> placeList) {
-        this.placeList = placeList;
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public Integer getPrice() {
@@ -65,16 +70,17 @@ public class Ticket {
         this.privilege = privilege;
     }
 
-
     @Override
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
-                ", clientList=" + clientList +
-                ", placeList=" + placeList +
+                ", client=" + client.getFull_name() +
+                ", place=" + place.getNumber() +
+                ", carriage=" + place.getCarriage().getNumber() +
+                ", train=" + place.getCarriage().getTrain().getId_train() +
                 ", price=" + price +
                 ", buy_date=" + buy_date +
                 ", privilege='" + privilege + '\'' +
-                "}\n";
+                '}';
     }
 }
