@@ -35,20 +35,21 @@ public class SqlRouteDao implements RouteDao {
 
     @Override
     public Route getRouteById(Integer id) {
-        Route result = new Route(null, null, null);
-        SqlConnection mySqlConnection = SqlConnection.getInstance();
-        Connection connection = mySqlConnection.getConnection();
-        try {
-            PreparedStatement ps = connection.prepareStatement(SQL_GET_ROUTE_BY_ID);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                result = new Route(rs.getInt(1), rs.getString(2),
-                        rs.getString(3));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
+//        Route result = new Route(null, null, null);
+//        SqlConnection mySqlConnection = SqlConnection.getInstance();
+//        Connection connection = mySqlConnection.getConnection();
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(SQL_GET_ROUTE_BY_ID);
+//            ps.setInt(1, id);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                result = new Route(rs.getInt(1), rs.getString(2),
+//                        rs.getString(3));
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return result;
+        return null;
     }
 }

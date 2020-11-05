@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ClientDao {
     List<Client> findAllClient();
+    void insertClient(Client client);
 }

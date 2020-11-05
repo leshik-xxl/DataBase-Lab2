@@ -5,9 +5,9 @@ import java.util.List;
 public class Place {
     private Integer id;
     private Integer number;
-    private Carriage carriage;
+    private String carriage;
 
-    public Place(Integer id, Integer number, Carriage carriage) {
+    public Place(Integer id, Integer number, String carriage) {
         this.id = id;
         this.number = number;
         this.carriage = carriage;
@@ -29,11 +29,11 @@ public class Place {
         this.number = number;
     }
 
-    public Carriage getCarriage() {
+    public String getCarriage() {
         return carriage;
     }
 
-    public void setCarriage(Carriage carriage) {
+    public void setCarriage(String carriage) {
         this.carriage = carriage;
     }
 
@@ -42,7 +42,7 @@ public class Place {
         return "Place{" +
                 "id=" + id +
                 ", number=" + number +
-                ", carriage=" + carriage.getId() +
+                ", carriage='" + carriage + '\'' +
                 "}\n";
     }
 }

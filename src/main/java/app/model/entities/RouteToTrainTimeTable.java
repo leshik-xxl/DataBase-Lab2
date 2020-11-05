@@ -1,16 +1,15 @@
 package app.model.entities;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
-public class RouteToTrain {
+public class RouteToTrainTimeTable {
     private Integer id;
-    private Route route;
-    private Train train;
+    private Integer route;
+    private String train;
     private Date arriveTime;
     private Date departTime;
 
-    public RouteToTrain(Integer id, Route route, Train train, Date arriveTime, Date departTime) {
+    public RouteToTrainTimeTable(Integer id, Integer route, String train, Date arriveTime, Date departTime) {
         this.id = id;
         this.route = route;
         this.train = train;
@@ -26,19 +25,19 @@ public class RouteToTrain {
         this.id = id;
     }
 
-    public Route getRoute() {
+    public Integer getRoute() {
         return route;
     }
 
-    public void setRoute(Route route) {
+    public void setRoute(Integer route) {
         this.route = route;
     }
 
-    public Train getTrain() {
+    public String getTrain() {
         return train;
     }
 
-    public void setTrain(Train train) {
+    public void setTrain(String train) {
         this.train = train;
     }
 
@@ -60,11 +59,10 @@ public class RouteToTrain {
 
     @Override
     public String toString() {
-        return "RouteToTrain{" +
+        return "RouteToTrainTimeTable{" +
                 "id=" + id +
-                ", train=" + train.getId_train() +
-                ", place_of_departure=" + route.getPlace_of_departure() +
-                ", place_of_arrival=" + route.getPlace_of_arrival() +
+                ", route=" + route +
+                ", train='" + train + '\'' +
                 ", arriveTime=" + arriveTime +
                 ", departTime=" + departTime +
                 "}\n";

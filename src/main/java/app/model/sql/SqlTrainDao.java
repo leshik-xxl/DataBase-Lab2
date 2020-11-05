@@ -33,19 +33,20 @@ public class SqlTrainDao implements TrainDao{
     }
 
     public Train getTrainById(String id){
-        Train result = new Train(null, null);
-        SqlConnection mySqlConnection = SqlConnection.getInstance();
-        Connection connection = mySqlConnection.getConnection();
-        try {
-            PreparedStatement ps = connection.prepareStatement(SQL_GET_TRAIN_BY_ID);
-            ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                result = new Train( rs.getString(1), rs.getInt(2));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
+//        Train result = new Train(null, null);
+//        SqlConnection mySqlConnection = SqlConnection.getInstance();
+//        Connection connection = mySqlConnection.getConnection();
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(SQL_GET_TRAIN_BY_ID);
+//            ps.setString(1, id);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                result = new Train( rs.getString(1), rs.getInt(2));
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return result;
+        return null;
     }
 }

@@ -21,10 +21,9 @@ public class SqlPlaceDao implements PlaceDao {
         try {
             Statement query = connection.createStatement();
             ResultSet rs = query.executeQuery(SQL_FIND_ALL_PLACE);
-            CarriageDao carriageDao = new SqlCarriageDao();
             while (rs.next()) {
                 result.add(new Place(rs.getInt(1), rs.getInt(2),
-                        carriageDao.getCarriageById(rs.getString(3))));
+                        rs.getString(3)));
             }
         } catch (Exception ex) {
             ex.printStackTrace();

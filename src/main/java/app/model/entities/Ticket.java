@@ -1,19 +1,17 @@
 package app.model.entities;
 
-import org.postgresql.replication.PGReplicationConnectionImpl;
-
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 public class Ticket {
     private Integer id;
-    private Client client;
-    private Place place;
-    private Integer price;
+    private Integer client;
+    private Integer place;
+    private BigDecimal price;
     private Date buy_date;
-    private String privilege;
+    private Boolean privilege;
 
-    public Ticket(Integer id, Client client, Place place, Integer price, Date buy_date, String privilege) {
+    public Ticket(Integer id, Integer client, Integer place, BigDecimal price, Date buy_date, Boolean privilege) {
         this.id = id;
         this.client = client;
         this.place = place;
@@ -30,27 +28,27 @@ public class Ticket {
         this.id = id;
     }
 
-    public Client getClient() {
+    public Integer getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(Integer client) {
         this.client = client;
     }
 
-    public Place getPlace() {
+    public Integer getPlace() {
         return place;
     }
 
-    public void setPlace(Place place) {
+    public void setPlace(Integer place) {
         this.place = place;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -62,11 +60,11 @@ public class Ticket {
         this.buy_date = buy_date;
     }
 
-    public String getPrivilege() {
+    public Boolean getPrivilege() {
         return privilege;
     }
 
-    public void setPrivilege(String privilege) {
+    public void setPrivilege(Boolean privilege) {
         this.privilege = privilege;
     }
 
@@ -74,13 +72,11 @@ public class Ticket {
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
-                ", client=" + client.getFull_name() +
-                ", place=" + place.getNumber() +
-                ", carriage=" + place.getCarriage().getNumber() +
-                ", train=" + place.getCarriage().getTrain().getId_train() +
+                ", client=" + client +
+                ", place=" + place +
                 ", price=" + price +
                 ", buy_date=" + buy_date +
-                ", privilege='" + privilege + '\'' +
-                '}';
+                ", privilege=" + privilege +
+                "}\n";
     }
 }
