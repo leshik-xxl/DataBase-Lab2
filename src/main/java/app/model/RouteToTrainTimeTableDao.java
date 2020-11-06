@@ -8,4 +8,5 @@ import java.util.List;
 public interface RouteToTrainTimeTableDao {
     List<RouteToTrainTimeTable> findAllRouteToTrainTimeTable();
     void insertRouteToTrainTimeTable(RouteToTrainTimeTable routeToTrainTimeTable);
+    void deleteRouteToTrainTimeTable(Integer id);
 }

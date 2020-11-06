@@ -15,6 +15,8 @@ public class SqlRouteToTrainTimeTableDao implements RouteToTrainTimeTableDao {
     public static final String SQL_INSERT_ROUTE_TO_TRAIN_TIMETABLE =
             "INSERT INTO route_to_train_time_table (id_route, id_train, arrive_time, depart_time) " +
             "VALUES (?, ?, ?, ?)";
+    public static final String SQL_DELETE_ROUTETOTRAINTIMETABLE_BY_ID = "DELETE FROM route_to_train_time_table WHERE id_route_to_train = ?";
+
 
     @Override
     public List<RouteToTrainTimeTable> findAllRouteToTrainTimeTable() {
@@ -47,6 +49,19 @@ public class SqlRouteToTrainTimeTableDao implements RouteToTrainTimeTableDao {
             ps.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteRouteToTrainTimeTable(Integer id) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_ROUTETOTRAINTIMETABLE_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

@@ -16,6 +16,9 @@ public class SqlClientDao implements ClientDao {
     public static final String SQL_INSERT_CLIENT = "INSERT INTO client (email, login, full_name) " +
             "VALUES (?, ?, ?)";
 
+    public static final String SQL_DELETE_CLIENT_BY_ID = "DELETE FROM client WHERE id_client = ?";
+
+
     @Override
     public List<Client> findAllClient() {
         List<Client> result = new ArrayList<Client>();
@@ -47,6 +50,18 @@ public class SqlClientDao implements ClientDao {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+    }
 
+    @Override
+    public void deleteClient(Integer id) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_CLIENT_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }

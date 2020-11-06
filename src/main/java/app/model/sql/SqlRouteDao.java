@@ -15,6 +15,8 @@ public class SqlRouteDao implements RouteDao {
     public static final String SQL_FIND_ALL_ROUTE = "SELECT * FROM route";
     public static final String SQL_INSERT_ROUTE = "INSERT INTO route (place_of_departure, place_of_arrival) " +
             "VALUES (?, ?)";
+    public static final String SQL_DELETE_ROUTE_BY_ID = "DELETE FROM route WHERE id_route = ?";
+
 
 
     @Override
@@ -46,6 +48,19 @@ public class SqlRouteDao implements RouteDao {
             ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteRoute(Integer id) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_ROUTE_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

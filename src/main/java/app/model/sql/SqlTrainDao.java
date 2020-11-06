@@ -12,6 +12,8 @@ public class SqlTrainDao implements TrainDao{
     public static final String SQL_FIND_ALL_TRAIN = "SELECT * FROM train";
     public static final String SQL_INSERT_TRAIN = "INSERT INTO train (id_train, max_carriage) " +
             "VALUES (?, ?)";
+    public static final String SQL_DELETE_TRAIN_BY_ID = "DELETE FROM train WHERE id_train = ?";
+
 
     @Override
     public List<Train> findAllTrain() {
@@ -41,6 +43,19 @@ public class SqlTrainDao implements TrainDao{
             ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteTrain(String trainId) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_TRAIN_BY_ID);
+            ps.setString(1, trainId);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

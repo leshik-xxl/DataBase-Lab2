@@ -13,6 +13,7 @@ public class SqlTicketDao implements TicketDao {
     public static final String SQL_FIND_ALL_TICKET = "SELECT * FROM ticket";
     public static final String SQL_INSERT_TICKET = "INSERT INTO ticket (fk_client_id, fk_id_place, price, buy_date, privillege ) " +
             "VALUES (?, ?, ?, ?, ?)";
+    public static final String SQL_DELETE_TICKET_BY_ID = "DELETE FROM ticket WHERE id_ticket = ?";
 
     @Override
     public List<Ticket> findAllTicket() {
@@ -46,6 +47,19 @@ public class SqlTicketDao implements TicketDao {
             ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteTicket(Integer id) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_TICKET_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

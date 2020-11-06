@@ -15,6 +15,9 @@ public class SqlPlaceDao implements PlaceDao {
     public static final String SQL_INSERT_PLACE = "INSERT INTO place (number_place, carriage_id) " +
             "VALUES (?, ?, ?)";
 
+    public static final String SQL_DELETE_PLACE_BY_ID = "DELETE FROM place WHERE id_place = ?";
+
+
 
     @Override
     public List<Place> findAllPlace() {
@@ -45,6 +48,19 @@ public class SqlPlaceDao implements PlaceDao {
             ps.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deletePlace(Integer id) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_PLACE_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

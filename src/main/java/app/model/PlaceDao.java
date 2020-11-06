@@ -9,4 +9,5 @@ import java.util.List;
 public interface PlaceDao {
     List<Place> findAllPlace();
     void insertPlace(Place place);
+    void deletePlace(Integer id);
 }

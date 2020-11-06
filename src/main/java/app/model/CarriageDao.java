@@ -7,4 +7,5 @@ import java.util.List;
 public interface CarriageDao {
     List<Carriage> findAllCarriage();
     void insertCarriage(Carriage carriage);
+    void deleteCarriage(String carriageID);
 }

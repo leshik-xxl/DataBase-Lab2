@@ -15,6 +15,7 @@ public class SqlCarriageDao implements CarriageDao {
     public static final String SQL_FIND_ALL_CARRIAGE = "SELECT * FROM carriage";
     public static final String SQL_INSERT_CARRIAGE = "INSERT INTO carriage (type, number, id_carriage, fk_route_to_train_time_table) " +
             "VALUES (?, ?, ?, ?)";
+    public static final String SQL_DELETE_CARRIAGE_BY_ID = "DELETE FROM carriage WHERE id_carriage = ?";
 
     @Override
     public List<Carriage> findAllCarriage() {
@@ -47,6 +48,19 @@ public class SqlCarriageDao implements CarriageDao {
             ps.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteCarriage(String carriageID) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE_CARRIAGE_BY_ID);
+            ps.setString(1, carriageID);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

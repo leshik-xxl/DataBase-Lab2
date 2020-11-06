@@ -1,4 +1,5 @@
 import app.model.*;
+import app.model.entities.Carriage;
 import app.model.entities.Client;
 import app.model.entities.Route;
 import app.model.entities.Ticket;
@@ -15,21 +16,26 @@ public class Main {
 //        testClient.insertClient(client);
 //        System.out.println("\n\n" + testClient.findAllClient());
 
-//        System.out.println("\n\n\n");
-//        CarriageDao testCarriage = new SqlCarriageDao();
-//        System.out.println(testCarriage.findAllCarriage());
+
+        CarriageDao testCarriage = new SqlCarriageDao();
+        System.out.println(testCarriage.findAllCarriage());
+        testCarriage.deleteCarriage("568");
+        //testCarriage.insertCarriage(new Carriage("pl", 5, "car06", 17));
+        System.out.println("\n\n\n");
+        System.out.println(testCarriage.findAllCarriage());
+
 //
 //        System.out.println("\n\n\n");
 //        PlaceDao testPlace = new SqlPlaceDao();
 //        System.out.println(testPlace.findAllPlace());
 //
-        System.out.println("\n\n\n");
-        RouteDao testRoute = new SqlRouteDao();
-        System.out.println(testRoute.findAllRoute());
-
-        Route route = new Route(null, "test_place_of_depart", "test_arrival");
-        testRoute.insertRoute(route);
-        System.out.println("\n\n" + testRoute.findAllRoute());
+//        System.out.println("\n\n\n");
+//        RouteDao testRoute = new SqlRouteDao();
+//        System.out.println(testRoute.findAllRoute());
+//
+//        Route route = new Route(null, "Rivne", "Odessa");
+//        testRoute.insertRoute(route);
+//        System.out.println("\n\n" + testRoute.findAllRoute());
 //
 //        System.out.println("\n\n\n");
 //        TrainDao testTrain = new SqlTrainDao();
