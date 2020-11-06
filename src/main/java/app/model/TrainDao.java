@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TrainDao {
     List<Train> findAllTrain();
-    Train getTrainById(String id);
+    void InsertTrain(Train train);
 }

@@ -5,14 +5,14 @@ import app.model.entities.Client;
 import app.model.entities.RouteToTrainTimeTable;
 import app.model.entities.Ticket;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SqlTicketDao implements TicketDao {
     public static final String SQL_FIND_ALL_TICKET = "SELECT * FROM ticket";
+    public static final String SQL_INSERT_TICKET = "INSERT INTO ticket (fk_client_id, fk_id_place, price, buy_date, privillege ) " +
+            "VALUES (?, ?, ?, ?, ?)";
 
     @Override
     public List<Ticket> findAllTicket() {
@@ -30,5 +30,22 @@ public class SqlTicketDao implements TicketDao {
             ex.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public void insertTicket(Ticket ticket) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_INSERT_TICKET);
+            ps.setInt(1, ticket.getClient());
+            ps.setInt(2, ticket.getPlace());
+            ps.setBigDecimal(3, ticket.getPrice());
+            ps.setTimestamp(4, (Timestamp) ticket.getBuy_date());
+            ps.setBoolean(5, ticket.getPrivilege());
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

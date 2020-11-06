@@ -2,6 +2,7 @@ package app.model.sql;
 
 import app.model.ClientDao;
 import app.model.entities.Client;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

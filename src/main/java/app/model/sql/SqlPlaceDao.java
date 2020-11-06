@@ -1,10 +1,10 @@
 package app.model.sql;
 
-import app.model.CarriageDao;
 import app.model.PlaceDao;
 import app.model.entities.Place;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -12,6 +12,9 @@ import java.util.List;
 
 public class SqlPlaceDao implements PlaceDao {
     public static final String SQL_FIND_ALL_PLACE = "SELECT * FROM place";
+    public static final String SQL_INSERT_PLACE = "INSERT INTO place (number_place, carriage_id) " +
+            "VALUES (?, ?, ?)";
+
 
     @Override
     public List<Place> findAllPlace() {
@@ -31,5 +34,17 @@ public class SqlPlaceDao implements PlaceDao {
         return result;
     }
 
-
+    @Override
+    public void insertPlace(Place place) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_INSERT_PLACE);
+            ps.setInt(1, place.getNumber());
+            ps.setString(2, place.getCarriage());
+            ps.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
