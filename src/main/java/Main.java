@@ -19,10 +19,12 @@ public class Main {
 
         CarriageDao testCarriage = new SqlCarriageDao();
         System.out.println(testCarriage.findAllCarriage());
-        testCarriage.deleteCarriage("568");
+        testCarriage.updateCarriageRouteToTrain("car01", 17);
+        System.out.println("\n" + testCarriage.findAllCarriage());
+        //testCarriage.deleteCarriage("568");
         //testCarriage.insertCarriage(new Carriage("pl", 5, "car06", 17));
-        System.out.println("\n\n\n");
-        System.out.println(testCarriage.findAllCarriage());
+//        System.out.println("\n\n\n");
+//        System.out.println(testCarriage.findAllCarriage());
 
 //
 //        System.out.println("\n\n\n");

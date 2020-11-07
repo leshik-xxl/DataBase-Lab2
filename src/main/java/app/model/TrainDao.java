@@ -9,4 +9,5 @@ public interface TrainDao {
     List<Train> findAllTrain();
     void InsertTrain(Train train);
     void deleteTrain(String trainId);
+    void updateTrainMaxCarriage(String id, Integer maxCarriage);
 }

@@ -13,7 +13,8 @@ public class SqlTrainDao implements TrainDao{
     public static final String SQL_INSERT_TRAIN = "INSERT INTO train (id_train, max_carriage) " +
             "VALUES (?, ?)";
     public static final String SQL_DELETE_TRAIN_BY_ID = "DELETE FROM train WHERE id_train = ?";
-
+    public static final String SQL_UPDATE_TRAIN_MAX_CARRIAGE =
+            "UPDATE train SET max_carriage = ? WHERE id_train LIKE ?";
 
     @Override
     public List<Train> findAllTrain() {
@@ -53,6 +54,20 @@ public class SqlTrainDao implements TrainDao{
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_DELETE_TRAIN_BY_ID);
             ps.setString(1, trainId);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateTrainMaxCarriage(String id, Integer maxCarriage) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_TRAIN_MAX_CARRIAGE);
+            ps.setInt(1, maxCarriage);
+            ps.setString(2, id);
             ps.executeUpdate();
         }catch (Exception ex){
             System.out.println(ex.getMessage());

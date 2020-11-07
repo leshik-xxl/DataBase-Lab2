@@ -16,6 +16,7 @@ public class SqlPlaceDao implements PlaceDao {
             "VALUES (?, ?, ?)";
 
     public static final String SQL_DELETE_PLACE_BY_ID = "DELETE FROM place WHERE id_place = ?";
+    public static final String SQL_UPDATE_PLACE_NUMBER = "UPDATE place SET number_place = ? WHERE id_place LIKE ?";
 
 
 
@@ -58,6 +59,20 @@ public class SqlPlaceDao implements PlaceDao {
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_DELETE_PLACE_BY_ID);
             ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateNumberPlace(Integer id_place, Integer number_place) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_PLACE_NUMBER);
+            ps.setInt(1, number_place);
+            ps.setInt(2, id_place);
             ps.executeUpdate();
         }catch (Exception ex){
             System.out.println(ex.getMessage());

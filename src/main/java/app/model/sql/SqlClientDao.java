@@ -17,6 +17,7 @@ public class SqlClientDao implements ClientDao {
             "VALUES (?, ?, ?)";
 
     public static final String SQL_DELETE_CLIENT_BY_ID = "DELETE FROM client WHERE id_client = ?";
+    public static final String SQL_UPDATE_CLIENT_EMAIL = "UPDATE client SET email = ? WHERE login LIKE ?";
 
 
     @Override
@@ -59,6 +60,20 @@ public class SqlClientDao implements ClientDao {
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_DELETE_CLIENT_BY_ID);
             ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateClient(String login, String email) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_CLIENT_EMAIL);
+            ps.setString(1, email);
+            ps.setString(2, login);
             ps.executeUpdate();
         }catch (Exception ex){
             System.out.println(ex.getMessage());

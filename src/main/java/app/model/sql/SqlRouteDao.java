@@ -16,6 +16,9 @@ public class SqlRouteDao implements RouteDao {
     public static final String SQL_INSERT_ROUTE = "INSERT INTO route (place_of_departure, place_of_arrival) " +
             "VALUES (?, ?)";
     public static final String SQL_DELETE_ROUTE_BY_ID = "DELETE FROM route WHERE id_route = ?";
+    public static final String SQL_UPDATE_ROUTE_DEPARTURE = "UPDATE route SET place_of_departure = ? WHERE id_route LIKE ?";
+    public static final String SQL_UPDATE_ROUTE_ARRIVAL = "UPDATE route SET place_of_arrival = ? WHERE id_route LIKE ?";
+
 
 
 
@@ -58,6 +61,34 @@ public class SqlRouteDao implements RouteDao {
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_DELETE_ROUTE_BY_ID);
             ps.setInt(1, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updatePlaceOfDeparture(Integer id, String departure) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_ROUTE_DEPARTURE);
+            ps.setString(1, departure);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updatePlaceOfArrival(Integer id, String arrival) {
+        SqlConnection mySqlConnection = SqlConnection.getInstance();
+        Connection connection = mySqlConnection.getConnection();
+        try{
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_ROUTE_ARRIVAL);
+            ps.setString(1, arrival);
+            ps.setInt(2, id);
             ps.executeUpdate();
         }catch (Exception ex){
             System.out.println(ex.getMessage());

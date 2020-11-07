@@ -8,4 +8,5 @@ public interface ClientDao {
     List<Client> findAllClient();
     void insertClient(Client client);
     void deleteClient(Integer id);
+    void updateClient(String login, String email);
 }

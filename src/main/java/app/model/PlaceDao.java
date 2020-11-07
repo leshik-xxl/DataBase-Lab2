@@ -10,4 +10,5 @@ public interface PlaceDao {
     List<Place> findAllPlace();
     void insertPlace(Place place);
     void deletePlace(Integer id);
+    void updateNumberPlace(Integer id_place, Integer number_place);
 }
