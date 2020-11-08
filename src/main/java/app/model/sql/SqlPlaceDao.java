@@ -13,7 +13,7 @@ import java.util.List;
 public class SqlPlaceDao implements PlaceDao {
     public static final String SQL_FIND_ALL_PLACE = "SELECT * FROM place";
     public static final String SQL_INSERT_PLACE = "INSERT INTO place (number_place, carriage_id) " +
-            "VALUES (?, ?, ?)";
+            "VALUES (?, ?)";
 
     public static final String SQL_DELETE_PLACE_BY_ID = "DELETE FROM place WHERE id_place = ?";
     public static final String SQL_UPDATE_PLACE_NUMBER = "UPDATE place SET number_place = ? WHERE id_place LIKE ?";
