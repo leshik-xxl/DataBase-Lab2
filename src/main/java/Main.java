@@ -1,16 +1,33 @@
-import app.model.ClientDao;
-import app.model.RandomServiceDao;
-import app.model.sql.SqlClientDao;
-import app.model.sql.SqlRandomServiceDao;
+import app.model.*;
+import app.model.entities.RouteToTrainTimeTable;
+import app.model.entities.Train;
+import app.model.sql.*;
 
 public class Main {
     public static void main(String[] args) {
         ClientDao testClient = new SqlClientDao();
-        System.out.println(testClient.findAllClient());
+        TrainDao testTrain = new SqlTrainDao();
+        RouteDao testRoute = new SqlRouteDao();
+        RouteToTrainTimeTableDao testRouteToTimeTableDao = new SqlRouteToTrainTimeTableDao();
+        CarriageDao testCarriage = new SqlCarriageDao();
+        PlaceDao testPlace = new SqlPlaceDao();
+        TicketDao testTicket = new SqlTicketDao();
+
         RandomServiceDao randomFill = new SqlRandomServiceDao();
-        randomFill.fillRandomTable(10);
-        System.out.println("\n");
+        randomFill.fillRandomTable(5);
         System.out.println(testClient.findAllClient());
+        System.out.println("\n");
+        System.out.println(testTrain.findAllTrain());
+        System.out.println("\n");
+        System.out.println(testRoute.findAllRoute());
+        System.out.println("\n");
+        System.out.println(testRouteToTimeTableDao.findAllRouteToTrainTimeTable());
+        System.out.println("\n");
+        System.out.println(testCarriage.findAllCarriage());
+        System.out.println("\n");
+        System.out.println(testPlace.findAllPlace());
+        System.out.println("\n");
+        System.out.println(testTicket.findAllTicket());
 
 //        Client client = new Client(null, "email@testinsert.net", "leshik", "Test Insert");
 //        testClient.insertClient(client);
