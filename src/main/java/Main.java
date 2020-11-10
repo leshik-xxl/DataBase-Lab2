@@ -1,9 +1,7 @@
 import app.model.*;
-import app.model.entities.RouteToTrainTimeTable;
-import app.model.entities.Train;
 import app.model.sql.*;
 
-import java.sql.SQLException;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -16,20 +14,20 @@ public class Main {
         TicketDao testTicket = new SqlTicketDao();
 
         RandomServiceDao randomFill = new SqlRandomServiceDao();
-        randomFill.fillRandomTable(1000);
-//        System.out.println(testClient.findAllClient());
-//        System.out.println("\n");
-//        System.out.println(testTrain.findAllTrain());
-//        System.out.println("\n");
-//        System.out.println(testRoute.findAllRoute());
-//        System.out.println("\n");
-//        System.out.println(testRouteToTimeTableDao.findAllRouteToTrainTimeTable());
-//        System.out.println("\n");
-//        System.out.println(testCarriage.findAllCarriage());
-//        System.out.println("\n");
-//        System.out.println(testPlace.findAllPlace());
-//        System.out.println("\n");
-//        System.out.println(testTicket.findAllTicket());
+        randomFill.fillRandomTable(10000);
+        System.out.println(testClient.findAllClient());
+        System.out.println("\n");
+        System.out.println(testTrain.findAllTrain());
+        System.out.println("\n");
+        System.out.println(testRoute.findAllRoute());
+        System.out.println("\n");
+        System.out.println(testRouteToTimeTableDao.findAllRouteToTrainTimeTable());
+        System.out.println("\n");
+        System.out.println(testCarriage.findAllCarriage());
+        System.out.println("\n");
+        System.out.println(testPlace.findAllPlace());
+        System.out.println("\n");
+        System.out.println(testTicket.findAllTicket());
 
 //        Client client = new Client(null, "email@testinsert.net", "leshik", "Test Insert");
 //        testClient.insertClient(client);
