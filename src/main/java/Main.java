@@ -1,6 +1,7 @@
 import app.model.*;
 import app.model.sql.*;
 
+import java.math.BigDecimal;
 
 
 public class Main {
@@ -13,19 +14,22 @@ public class Main {
         PlaceDao testPlace = new SqlPlaceDao();
         TicketDao testTicket = new SqlTicketDao();
 
-        RandomServiceDao randomFill = new SqlRandomServiceDao();
-        randomFill.fillRandomTable(10000);
-        System.out.println(testClient.findAllClient());
-        System.out.println("\n");
-        System.out.println(testTrain.findAllTrain());
-        System.out.println("\n");
-        System.out.println(testRoute.findAllRoute());
-        System.out.println("\n");
-        System.out.println(testRouteToTimeTableDao.findAllRouteToTrainTimeTable());
-        System.out.println("\n");
-        System.out.println(testCarriage.findAllCarriage());
-        System.out.println("\n");
-        System.out.println(testPlace.findAllPlace());
+        ServiceDao service = new SqlServiceDao();
+        System.out.println(service.findTicketWithLessPricePrivilegeIsCarriageNumberLess(BigDecimal.valueOf(10000), false, 50));
+
+//        RandomServiceDao randomFill = new SqlRandomServiceDao();
+//        randomFill.fillRandomTable(20);
+//        System.out.println(testClient.findAllClient());
+//        System.out.println("\n");
+//        System.out.println(testTrain.findAllTrain());
+//        System.out.println("\n");
+//        System.out.println(testRoute.findAllRoute());
+//        System.out.println("\n");
+//        System.out.println(testRouteToTimeTableDao.findAllRouteToTrainTimeTable());
+//        System.out.println("\n");
+//        System.out.println(testCarriage.findAllCarriage());
+//        System.out.println("\n");
+//        System.out.println(testPlace.findAllPlace());
         System.out.println("\n");
         System.out.println(testTicket.findAllTicket());
 

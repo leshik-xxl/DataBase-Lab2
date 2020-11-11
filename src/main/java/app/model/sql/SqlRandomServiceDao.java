@@ -22,7 +22,7 @@ public class SqlRandomServiceDao implements RandomServiceDao {
      * place
      * ticket
      * */
-    public static final String SQL_RANDOM_CHAR = "chr(trunc(97 + random()*50)::int)";
+    public static final String SQL_RANDOM_CHAR = "chr(trunc(97 + random()*25)::int)";
     public static final String SQL_RANDOM_INT = "floor(random()*(200-1+1))+1";
     public static final String SQL_RANDOM_NUMERIC = "random()*(1300 - 50) + 50";
     public static final String SQL_RANDOM_DATE = "'2020-01-1 20:00:00'::timestamp + " +
@@ -252,38 +252,44 @@ public class SqlRandomServiceDao implements RandomServiceDao {
         }
     }
 
-    private void fillRouteToTrainTimeTable(int numberRow) {
+    private void fillRouteToTrainTimeTable() {
         RouteToTrainTimeTableDao insertRouteToTrainTimeTable = new SqlRouteToTrainTimeTableDao();
         List<Integer> id_route = findAllRouteAvailableRouteId();
         List<String> id_train = findAllRouteAvailableTrainId();
+        int numberRow = id_route.size();
+        if(id_route.size() > id_train.size())
+            numberRow = id_train.size();
         for (int i = 0; i < numberRow; i++) {
             insertRouteToTrainTimeTable.insertRouteToTrainTimeTable(new RouteToTrainTimeTable(null, id_route.get(i),
                     id_train.get(i), getRandomTimestamp(), getRandomTimestamp()));
         }
     }
 
-    private void fillCarriage(int numberRow) {
+    private void fillCarriage() {
         CarriageDao insertCarriage = new SqlCarriageDao();
         List<Integer> fk_id_route_to_train_time_table = findAllCarriageRouteTrainTimeTable();
-        for (int i = 0; i < numberRow; i++) {
+        for (Integer integer : fk_id_route_to_train_time_table) {
             insertCarriage.insertCarriage(new Carriage(getRandomString(7), getRandomInteger(),
-                    getRandomString(5), fk_id_route_to_train_time_table.get(i)));
+                    getRandomString(5), integer));
         }
     }
 
-    private void fillPlace(int numberRow) {
+    private void fillPlace() {
         PlaceDao insertPlace = new SqlPlaceDao();
         List<String> id_carriage = findAllCarriage();
-        for (int i = 0; i < numberRow; i++) {
-            insertPlace.insertPlace(new Place(null, getRandomInteger(), id_carriage.get(i)));
+        for (String s : id_carriage) {
+            insertPlace.insertPlace(new Place(null, getRandomInteger(), s));
         }
 
     }
 
-    private void fillTicket(int numberRow) {
+    private void fillTicket() {
         TicketDao insertTicket = new SqlTicketDao();
         List<Integer> fk_client_id = findAllClient();
         List<Integer> fk_id_place = findAllPlace();
+        int numberRow = fk_client_id.size();
+        if(fk_client_id.size() > fk_id_place.size())
+            numberRow = fk_id_place.size();
         for(int i = 0; i < numberRow; i++){
             insertTicket.insertTicket(new Ticket(null, fk_client_id.get(i), fk_id_place.get(i),
                     getRandomNumeric(), getRandomTimestamp(), getRandomBoolean()));
@@ -296,10 +302,10 @@ public class SqlRandomServiceDao implements RandomServiceDao {
         fillClient(numberRow);
         fillRoute(numberRow);
         fillTrain(numberRow);
-        fillRouteToTrainTimeTable(numberRow);
-        fillCarriage(numberRow);
-        fillPlace(numberRow);
-        fillTicket(numberRow);
+        fillRouteToTrainTimeTable();
+        fillCarriage();
+        fillPlace();
+        fillTicket();
     }
 }
 
