@@ -3,7 +3,7 @@ package app.model.dto;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class TicketWithLessPricePrivilegeIsCarriageNumberLess {
+public class TicketPricePrivilegeCarriage {
     private BigDecimal price;
     private Boolean privilege;
     private Timestamp buyDate;
@@ -16,11 +16,11 @@ public class TicketWithLessPricePrivilegeIsCarriageNumberLess {
     private Integer numberCarriage;
     private Integer numberPlace;
 
-    public TicketWithLessPricePrivilegeIsCarriageNumberLess(BigDecimal price, Boolean privilege,
-                                                            Timestamp buyDate, String fullName,
-                                                            String placeOfDepart, String placeOfArrive,
-                                                            Timestamp arriveTime, Timestamp departTime,
-                                                            String train, Integer numberCarriage, Integer numberPlace) {
+    public TicketPricePrivilegeCarriage(BigDecimal price, Boolean privilege,
+                                        Timestamp buyDate, String fullName,
+                                        String placeOfDepart, String placeOfArrive,
+                                        Timestamp arriveTime, Timestamp departTime,
+                                        String train, Integer numberCarriage, Integer numberPlace) {
         this.price = price;
         this.privilege = privilege;
         this.buyDate = buyDate;
@@ -124,7 +124,7 @@ public class TicketWithLessPricePrivilegeIsCarriageNumberLess {
 
     @Override
     public String toString() {
-        return "TicketWithLessPricePrivilegeIsCarriageNumberLess{" +
+        return "TicketPricePrivilegeCarriage{" +
                 "price=" + price +
                 ", privilege=" + privilege +
                 ", buyDate=" + buyDate +

@@ -15,9 +15,9 @@ public class SqlRouteToTrainTimeTableDao implements RouteToTrainTimeTableDao {
             "VALUES (?, ?, ?, ?)";
     public static final String SQL_DELETE_ROUTE_TO_TRAIN_TIMETABLE_BY_ID = "DELETE FROM route_to_train_time_table WHERE id_route_to_train = ?";
     public static final String SQL_UPDATE_ROUTE_TO_TRAIN_TIMETABLE_DEPARTURE =
-            "UPDATE route_to_train_time_table SET depart_time = ? WHERE id_route_to_train LIKE ?";
+            "UPDATE route_to_train_time_table SET depart_time = ? WHERE id_route_to_train = ?";
     public static final String SQL_UPDATE_ROUTE_TO_TRAIN_TIMETABLE_ARRIVAL =
-            "UPDATE route_to_train_time_table SET arrive_time = ? WHERE id_route_to_train LIKE ?";
+            "UPDATE route_to_train_time_table SET arrive_time = ? WHERE id_route_to_train = ?";
 
 
     @Override
